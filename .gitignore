@@ -1,0 +1,40 @@
+# Data directories
+data/raw/
+data/processed/
+
+# Output directories
+outputs/
+
+# Parquet files
+*.parquet
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Keep figures/ directory committed
+!figures/
+
