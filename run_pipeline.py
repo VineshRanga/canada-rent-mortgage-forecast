@@ -29,7 +29,7 @@ try:
 except ImportError:
     PLOTLY_CHARTS_AVAILABLE = False
 
-# Import matplotlib chart generators (optional, may not be available)
+# Import matplotlib chart generators (optional)
 try:
     from src.viz.mpl_eval import generate_rent_eval_charts
     MPL_EVAL_AVAILABLE = True
@@ -256,7 +256,7 @@ def run_pipeline() -> None:
         outputs_created.append(f"  ✓ Rent target: {rent_target_path}")
         print()
         
-        # Generate rate story charts (if exog and rent_target exist)
+        # Generate rate story charts
         exog_path = PROCESSED_DIR / "exog_quarterly.parquet"
         if exog_path.exists() and rent_target_path.exists():
             print("Generating matplotlib rate story charts...")
@@ -329,7 +329,7 @@ def run_pipeline() -> None:
             print(f"  Uplift vs Lag4: MAE {fmt_float(uplift.get('mae_pct'), digits=1)}%, sMAPE {fmt_float(uplift.get('smape_pct'), digits=1)}%")
         print()
         
-        # Generate matplotlib evaluation charts (if predictions file exists)
+        # Generate matplotlib evaluation charts
         if rent_pred_path.exists():
             print("Generating matplotlib evaluation charts...")
             print("-" * 80)

@@ -1,8 +1,4 @@
-"""
-Build figures directory with curated PNGs for GitHub/README embedding.
-
-Copies selected charts from various output directories into a committed figures/ folder.
-"""
+"""Copy curated PNGs into figures/ for GitHub/README embedding."""
 
 import sys
 from pathlib import Path
@@ -15,35 +11,16 @@ from src.config import OUTPUT_DIR
 
 
 def build_figures() -> None:
-    """
-    Copy curated PNG files into figures/ directory for GitHub/README embedding.
-    
-    Maps source files to target filenames:
-    - rent_toronto_1bed_forecast.png (from plotly)
-    - rent_gta_1bed_forecast.png (from plotly)
-    - toronto_rent_yoy_vs_bank_rate.png (from mpl_story)
-    - rent_uplift_lag4_heatmap.png (from mpl_eval)
-    - rent_uplift_top15_cmas.png (from mpl_eval)
-    - mortgage_actual_vs_predicted.png (from plots)
-    """
-    # Define file mappings: (source_path, target_filename)
+    """Copy curated PNGs into figures/ for GitHub/README embedding."""
     file_mappings = [
-        # Forecast charts with actual vs pred vs baselines
         (OUTPUT_DIR / "plots" / "plotly" / "rent_toronto_1bed.png", "rent_toronto_1bed_forecast.png"),
         (OUTPUT_DIR / "plots" / "plotly" / "rent_gta_proxy_1bed.png", "rent_gta_1bed_forecast.png"),
-        
-        # Story charts
         (OUTPUT_DIR / "plots" / "mpl_story" / "toronto_rent_yoy_vs_bank_rate.png", "toronto_rent_yoy_vs_bank_rate.png"),
-        
-        # Evaluation charts
         (OUTPUT_DIR / "plots" / "mpl_eval" / "rent_uplift_lag4_heatmap.png", "rent_uplift_lag4_heatmap.png"),
         (OUTPUT_DIR / "plots" / "mpl_eval" / "rent_uplift_top15_cmas.png", "rent_uplift_top15_cmas.png"),
-        
-        # Existing forecast charts
         (OUTPUT_DIR / "plots" / "mortgage_actual_vs_predicted.png", "mortgage_actual_vs_predicted.png"),
     ]
     
-    # Create figures directory
     figures_dir = Path("figures")
     figures_dir.mkdir(parents=True, exist_ok=True)
     
@@ -52,7 +29,6 @@ def build_figures() -> None:
     print("=" * 80)
     print(f"Destination: {figures_dir.absolute()}\n")
     
-    # Copy files
     copied_files = []
     missing_files = []
     
