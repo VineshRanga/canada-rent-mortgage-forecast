@@ -15,7 +15,8 @@ def build_figures() -> None:
     file_mappings = [
         (OUTPUT_DIR / "plots" / "plotly" / "rent_toronto_1bed.png", "rent_toronto_1bed_forecast.png"),
         (OUTPUT_DIR / "plots" / "plotly" / "rent_gta_proxy_1bed.png", "rent_gta_1bed_forecast.png"),
-        (OUTPUT_DIR / "plots" / "mpl_story" / "toronto_rent_yoy_vs_bank_rate.png", "toronto_rent_yoy_vs_bank_rate.png"),
+        (OUTPUT_DIR / "plots" / "mpl_story" / "toronto_rent_qoq_vs_goc5y.png", "toronto_rent_qoq_vs_goc5y.png"),
+        (OUTPUT_DIR / "plots" / "mpl_story" / "gta_rent_qoq_vs_goc5y.png", "gta_rent_qoq_vs_goc5y.png"),
         (OUTPUT_DIR / "plots" / "mpl_eval" / "rent_uplift_lag4_heatmap.png", "rent_uplift_lag4_heatmap.png"),
         (OUTPUT_DIR / "plots" / "mpl_eval" / "rent_uplift_top15_cmas.png", "rent_uplift_top15_cmas.png"),
         (OUTPUT_DIR / "plots" / "mortgage_actual_vs_predicted.png", "mortgage_actual_vs_predicted.png"),
