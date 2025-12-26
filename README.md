@@ -2,6 +2,52 @@
 
 This project forecasts Canadian apartment rents and mortgage loans using Statistics Canada data. I built two models: an ElasticNet model for rent forecasts by CMA, and a SARIMAX model for mortgage loans at the Canada level. The data runs from 2019Q1 to 2025Q3. This is a clean, reproducible pipeline with interpretable results.
 
+## Q1 2026 Consensus Outlook
+
+This outlook is based on model outputs, observed trends through 2025Q3, and structural relationships in the data. It's qualitative, not point forecasts.
+
+### Rates
+
+**Base Case:**
+- Bank rate likely holds or eases modestly from current levels, conditional on inflation data
+- 5-year GoC yield reflects market expectations for gradual easing, remains sensitive to inflation surprises
+- Key drivers: inflation persistence, labour market tightness, housing market stability
+- Rate transmission to mortgages operates with 1-2 quarter lag
+
+**Upside Case:** Faster disinflation allows earlier cuts, supporting mortgage growth and rental demand
+
+**Downside Case:** Inflation re-accelerates or housing stress intensifies, forcing higher-for-longer policy
+
+### Mortgages
+
+**Base Case:**
+- Growth likely remains subdued or slightly negative in Q1 2026, reflecting rate sensitivity and lagged effects
+- Housing demand proxies (population growth, migration) remain supportive but rate headwinds persist
+- Credit conditions tighten further if rates stay elevated, loosening if cuts materialize
+- SARIMAX model shows strong rate sensitivity with 1-2 quarter transmission lag
+
+**Upside Case:** Rate cuts materialize, unlocking pent-up demand and accelerating mortgage growth
+
+**Downside Case:** Prolonged high rates or housing market stress leads to further credit contraction
+
+### Rent
+
+**Base Case:**
+- 1-bedroom asking rent: moderate upward pressure continues, driven by population growth and migration inflows
+- 2-bedroom asking rent: similar direction but potentially less pressure than 1-bedroom (supply/demand balance)
+- Housing starts lag effects: recent starts will add supply with 2-3 quarter delay, but demand growth may outpace
+- Rate effects: higher rates reduce investor demand for rental properties but also reduce homeownership, increasing rental demand
+- ElasticNet model shows strong signals from migration and population growth, rate effects are mixed
+
+**Upside Case:** Migration surge continues, housing starts lag, rates ease (supporting demand), leading to stronger rent growth
+
+**Downside Case:** Migration slows, housing starts accelerate, rates stay high (reducing demand), leading to flat or declining rents
+
+**Important Limitations:**
+- Data covers CMA boundaries (Toronto CMA includes Mississauga, Brampton, etc.)
+- This is asking rent (new listings), not existing tenant rent (which adjusts more slowly)
+- Regional variations within GTA are not captured by CMA-level aggregation
+
 ## Data and Scope
 
 **Rent data:**
@@ -189,49 +235,3 @@ All outputs are saved to `outputs/`:
 - `exog_quarterly.parquet`: Exogenous features
 - `rent_model_dataset.parquet`: Rent modeling dataset
 - `mortgage_model_dataset.parquet`: Mortgage modeling dataset
-
-## Q1 2026 Consensus Outlook
-
-This outlook is based on model outputs, observed trends through 2025Q3, and structural relationships in the data. It's qualitative, not point forecasts.
-
-### Rates
-
-**Base Case:**
-- Bank rate likely holds or eases modestly from current levels, conditional on inflation data
-- 5-year GoC yield reflects market expectations for gradual easing, remains sensitive to inflation surprises
-- Key drivers: inflation persistence, labour market tightness, housing market stability
-- Rate transmission to mortgages operates with 1-2 quarter lag
-
-**Upside Case:** Faster disinflation allows earlier cuts, supporting mortgage growth and rental demand
-
-**Downside Case:** Inflation re-accelerates or housing stress intensifies, forcing higher-for-longer policy
-
-### Mortgages
-
-**Base Case:**
-- Growth likely remains subdued or slightly negative in Q1 2026, reflecting rate sensitivity and lagged effects
-- Housing demand proxies (population growth, migration) remain supportive but rate headwinds persist
-- Credit conditions tighten further if rates stay elevated, loosening if cuts materialize
-- SARIMAX model shows strong rate sensitivity with 1-2 quarter transmission lag
-
-**Upside Case:** Rate cuts materialize, unlocking pent-up demand and accelerating mortgage growth
-
-**Downside Case:** Prolonged high rates or housing market stress leads to further credit contraction
-
-### Rent
-
-**Base Case:**
-- 1-bedroom asking rent: moderate upward pressure continues, driven by population growth and migration inflows
-- 2-bedroom asking rent: similar direction but potentially less pressure than 1-bedroom (supply/demand balance)
-- Housing starts lag effects: recent starts will add supply with 2-3 quarter delay, but demand growth may outpace
-- Rate effects: higher rates reduce investor demand for rental properties but also reduce homeownership, increasing rental demand
-- ElasticNet model shows strong signals from migration and population growth, rate effects are mixed
-
-**Upside Case:** Migration surge continues, housing starts lag, rates ease (supporting demand), leading to stronger rent growth
-
-**Downside Case:** Migration slows, housing starts accelerate, rates stay high (reducing demand), leading to flat or declining rents
-
-**Important Limitations:**
-- Data covers CMA boundaries (Toronto CMA includes Mississauga, Brampton, etc.)
-- This is asking rent (new listings), not existing tenant rent (which adjusts more slowly)
-- Regional variations within GTA are not captured by CMA-level aggregation
